@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Clara 💖</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="https://open.spotify.com/playlist/0FbardHbRyPXfyeHKkyjJ1?si=b63a26716acf4f73">Musics</a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </nav>
+    
+  <div class="hearts"></div>
+
+  <div class="card">
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="voltar-topo">⬆️</button>
+
+    <img src="nos.jpg/1287CC57-62BE-481E-B3BC-44C26B846D3D.jpg" alt="Foto nossa" class="foto">
+
+    <h1>Hello. My love! 💕</h1>
+    <p>
+      Clara, cada momento com você faz meu mundo mais bonito. <br>
+      Obrigado por ser minha luz, minha alegria e meu amor. <br>
+      Te amo infinitamente! 💖
+    </p>
+
+    <div class="heart">❤️</div>
+
+    <video controls autoplay muted loop class="video">
+      <source src="video.mp4/0ca67c0d7ec64aab92963eba669e6084.mp4" type="video/mp4">
+      
+      
+    </video>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const heartsContainer = document.querySelector('.hearts');
+        const heartIcons = ['❤️', '💖', '💘', '💝', '💓', '💗']; // Diferentes tipos de corações
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart-float';
+            heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+            
+            // Posição horizontal aleatória
+            heart.style.left = Math.random() * 100 + 'vw';
+            
+            // Duração e atraso aleatórios para variar a velocidade
+            const duration = Math.random() * 5 + 5;
+            const delay = Math.random() * 5;
+            heart.style.animationDuration = duration + 's';
+            heart.style.animationDelay = delay + 's';
+            
+            heartsContainer.appendChild(heart);
+            
+            // Remove o coração após a animação terminar para evitar sobrecarga
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+        
+        // Cria vários corações continuamente
+        setInterval(createHeart, 300); // Ajuste o intervalo para mais/menos corações
+    });
+</script>
+</body>
+</html>
