@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Clara 💖</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <ul class="nav-links">
+        
+        <li class="center-link"><a href="https://open.spotify.com/playlist/0FbardHbRyPXfyeHKkyjJ1?si=b63a26716acf4f73">Musics</a></li>
+        
+    </ul>
+    
+   
+</nav>
+    
+  <div class="hearts"></div>
+  <div>
+    
+    <img src="1287CC57-62BE-481E-B3BC-44C26B846D3D.jpg" alt="Foto nossa" class="foto">
+    <h1>Alberto e Clara💕</h1>
+     <div class="music-player">
+        <audio id="bg-music" loop muted>
+            <source src="Matheus & Kauan - Nessas Horas - Na Praia 2 _ Ao Vivo.mp3" type="audio/mp3">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+        <div class="player-controls">
+            <button id="playBtn">
+                <i class="fas fa-play" id="playIcon"></i>
+            </button>
+            <div class="volume-container">
+                <i class="fas fa-volume-up" id="volumeIcon"></i>
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+            </div>
+        </div>
+        <div class="song-info">Nessas Horas - Matheus e Kauan</div>
+    </div>
+    <p> 
+        <div class="texto-container">
+        <div class="texto-grande">
+        <div class="texto-com-fundo">
+            <span class="texto-com-fundo"> 
+        Oii meu amor, este é apenas mini site nosso. 
+        Quero que saiba que eu agradeço muito por ter você na minha vida,
+        ter me apoiado na fase que eu mais estava <br> desacreditando de mim mesmo,
+        vc chegou para me motivar.<br>
+        Além de ser a garota mais linda que eu já vi nesse mundo,<br>
+        tem algo ai que me faz querer ficar com você para sempre.<br>
+        Te amo muito minha princesa, estou com muita saudade de você.<br>
+        Espero que goste do site, e que ele te faça lembrar de mim.<br>
+    </p>
+    <div class="heart">❤️</div>
+    <video controls autoplay muted loop class="video">
+        <video controls loop muted playsinline class="video"></video>
+      <source src="0ca67c0d7ec64aab92963eba669e6084 (1).mp4" type="video/mp4">
+    </video>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const heartsContainer = document.querySelector('.hearts');
+        const heartIcons = ['❤️', '💖', '💘', '💝', '💓', '💗']; // Diferentes tipos de corações
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart-float';
+            heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+            
+            // Posição horizontal aleatória
+            heart.style.left = Math.random() * 100 + 'vw';
+            
+            // Duração e atraso aleatórios para variar a velocidade
+            const duration = Math.random() * 5 + 5;
+            const delay = Math.random() * 5;
+            heart.style.animationDuration = duration + 's';
+            heart.style.animationDelay = delay + 's';
+            
+            heartsContainer.appendChild(heart);
+            
+            // Remove o coração após a animação terminar para evitar sobrecarga
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+        
+        // Cria vários corações continuamente
+        setInterval(createHeart, 300); // Ajuste o intervalo para mais/menos corações
+    });
+</script>
+<script>
+   // Elementos
+const audio = document.getElementById('bg-music');
+const playBtn = document.getElementById('playBtn');
+const playIcon = document.getElementById('playIcon');
+const volumeIcon = document.getElementById('volumeIcon');
+const volumeSlider = document.getElementById('volumeSlider');
+
+// Configuração inicial
+audio.volume = 0.5;
+let isPlaying = false;
+
+// Controles
+playBtn.addEventListener('click', () => {
+    if(isPlaying) {
+        audio.pause();
+        playIcon.className = "fas fa-play";
+    } else {
+        audio.play()
+            .then(() => {
+                playIcon.className = "fas fa-pause";
+                audio.muted = false;
+            })
+            .catch(e => {
+                alert('Clique em qualquer lugar da página primeiro para permitir o áudio');
+            });
+    }
+    isPlaying = !isPlaying;
+});
+
+volumeSlider.addEventListener('input', () => {
+    audio.volume = volumeSlider.value;
+    audio.muted = false;
+    volumeIcon.className = audio.volume == 0 ? "fas fa-volume-mute" : "fas fa-volume-up";
+});
+
+// Tenta autoplay mutado
+window.addEventListener('DOMContentLoaded', () => {
+    audio.play().then(() => audio.pause());
+});
+
+// Ativa o som na primeira interação
+document.body.addEventListener('click', () => {
+    audio.muted = false;
+}, { once: true });
+</script>
+
+<!-- Adicione o Font Awesome para os ícones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
